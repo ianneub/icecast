@@ -24,5 +24,11 @@ fi
 if [ -n "$ICECAST_MAX_CLIENTS" ]; then
     sed -i "s/<clients>[^<]*<\/clients>/<clients>$ICECAST_MAX_CLIENTS<\/clients>/g" /etc/icecast.xml
 fi
+if [ -n "$ICECAST_BURST_ON_CONNECT" ]; then
+    sed -i "s/<burst-on-connect>[^<]*<\/burst-on-connect>/<burst-on-connect>$ICECAST_BURST_ON_CONNECT<\/burst-on-connect>/g" /etc/icecast.xml
+fi
+if [ -n "$ICECAST_BURST_SIZE" ]; then
+    sed -i "s/<burst-size>[^<]*<\/burst-size>/<burst-size>$ICECAST_BURST_SIZE<\/burst-size>/g" /etc/icecast.xml
+fi
 
 exec "$@"
